@@ -16,6 +16,65 @@
       type="text/javascript"
       src="../extjs/build/classic/locale/locale-ru.js"
     ></script>
+
+    <script>
+      Ext.define("Classes.Person", {
+        name: "Eugene",
+        surname: "Popov",
+
+        getInfo: function() {
+          alert("Full name: " + this.name + " " + this.surname);
+        }
+      });
+
+      var eugene = Ext.create("Classes.Person");
+      eugene.getInfo();
+      var tom = Ext.create("Classes.Person");
+      tom.name = "Tom";
+      tom.surname = "Johns";
+      tom.getInfo();
+
+      Ext.define("Classes.Person1", {
+        name: "Eugene",
+        surname: "Popov",
+        constructor: function(name, surname) {
+          if (name && surname) {
+            this.name = name;
+            this.surname = surname;
+          }
+        },
+        getInfo: function() {
+          alert("Full name: " + this.name + " " + this.surname);
+        }
+      });
+
+      var eugene1 = Ext.create("Classes.Person1");
+      eugene1.getInfo();
+      eugene1 = Ext.create("Classes.Person1", "Anders", "Heilsberg");
+      eugene1.getInfo();
+      eugene1 = new Classes.Person1("Bill", "Gates");
+      eugene1.getInfo();
+
+      Ext.define("Classes.Person2", {
+        config: {
+          name: "Eugene",
+          surname: "Popov"
+        },
+        constructor: function(config) {
+          // this.initConfig(config);
+          Ext.apply(this, config);
+        },
+        getInfo: function() {
+          alert("Full name: " + this.name + " " + this.surname);
+        }
+      });
+      var eugene2 = Ext.create("Classes.Person2");
+      eugene2.getInfo();
+      eugene2.setName("James");
+      eugene2.setSurname("Bond");
+      eugene2.getInfo();
+    </script>
+
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body></body>
