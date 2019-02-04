@@ -17,7 +17,7 @@
       src="../extjs/build/classic/locale/locale-ru.js"
     ></script>
 
-    <script>
+    <!-- <script>
       Ext.define("Classes.Person", {
         name: "Eugene",
         surname: "Popov",
@@ -73,6 +73,16 @@
       eugene2.setName("James");
       eugene2.setSurname("Bond");
       eugene2.getInfo();
+    </script>-->
+    <script>
+      Ext.Loader.setConfig({
+        enabled: true,
+        path: { Classes: "Classes" }
+      });
+      Ext.require("Classes.Manager", function() {
+        var eugene = Ext.create("Classes.Manager", "Tom", "James", "Software");
+        eugene.getInfo();
+      });
     </script>
 
     <script type="text/javascript" src="app.js"></script>
